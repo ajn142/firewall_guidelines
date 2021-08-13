@@ -33,14 +33,18 @@ The guidance is also based on a simple, somewhat generic environment. For busine
 ## DHCP
 
 1. Setup static DHCP addresses for all devices, as needed, to support future troubleshooting. For business environments, usually, this is only applied to the LAN, with the Guest/IoT network having dynamic IP assignments.
+    - https://docs.netgate.com/pfsense/en/latest/services/dhcp/ipv4.html#static-mappings
+    - https://docs.netgate.com/pfsense/en/latest/services/dhcp/mappings-in-pools.html#static-mappings-inside-dhcp-pools
 
 ## Performance
 
 1. Depending on the internal to external line speed disparities, you may need to implement fixes for bufferbloat. This typically occurs in environments when a high-speed local network is connected to a lower speed external network, especially one that is asymmetric (100mb down, 1mb up). 
+    - https://docs.netgate.com/pfsense/en/latest/trafficshaper/index.html#traffic-shaper
 
 ## Block Access to Bad Actors
 
 1. Leverage DNS and IP block lists to block access to known bad sites on the internet, from internal devices which may be compromised by malware or by internal user browsing. Not all firewalls support this capability - pfSense does. 
+    - https://forum.netgate.com/category/62/pfblockerng
 2. Leverage DNS and IP block lists to block access to TOR nodes from internal systems, unless this is specifically needed.
 3. Leverage DNS and IP block lists to block access to DNS over HTTPS DNS Servers from internal systems, unless this is specifically needed, as DoH allows users to bypass whatever web filter you have enabled, as well as is used by some malware to hide C2C communications.
 4. Leverage GEO blocking capabilities of the firewall to block access from the LAN to countries known to be the source of large numbers of attacks and malware unless specifically needed. 
